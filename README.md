@@ -1,4 +1,4 @@
-#  GigShield — AI-Powered Parametric Insurance for India's Gig Economy
+#  Aegesis — AI-Powered Parametric Insurance for India's Gig Economy
 **Guidewire DEVTrails 2026 — Phase 1 Final Submission**
 
 ---
@@ -7,7 +7,7 @@
 
 | Section # | Topic | Description |
 | :--- | :--- | :--- |
-| **1** | [Executive Summary](#1-executive-summary) | High-level synthesis of the GigShield parametric model |
+| **1** | [Executive Summary](#1-executive-summary) | High-level synthesis of the Aegesis parametric model |
 | **2** | [Research Insights](#2-research-insights) | Foundational data on Q-Commerce income fragility |
 | **3** | [Problem Statement & The Crisis](#3-problem-statement--the-crisis) | Defining the 10-minute SLA vulnerability |
 | **4** | [Target Persona](#4-target-persona-q-commerce-delivery-partners) | Focusing on Zepto/Blinkit demographics |
@@ -30,9 +30,9 @@
 
 ## 1. Executive Summary
 
-**Aegis / GigShield** is an AI-powered parametric insurance platform engineered exclusively for India's Q-Commerce gig economy (Zepto, Blinkit). By correlating real-time GPS streaming data (via Apache Kafka) with external APIs (IMD, CPCB), the platform automatically issues micro-insurance payouts via Razorpay UPI when uncontrollable environmental or operational disruptions halt a rider's income. 
+**Aegis / Aegesis** is an AI-powered parametric insurance platform engineered exclusively for India's Q-Commerce gig economy (Zepto, Blinkit). By correlating real-time GPS streaming data (via Apache Kafka) with external APIs (IMD, CPCB), the platform automatically issues micro-insurance payouts via Razorpay UPI when uncontrollable environmental or operational disruptions halt a rider's income. 
 
-Traditional insurance fails the gig economy because it measures payout via months of paperwork. GigShield measures payout in milliseconds. Built on a dynamically adjusted weekly premium model (₹45–₹105/week) powered by an XGBoost algorithm, GigShield protects the most vulnerable segments of the gig workforce against 100% income wipes caused by severe weather, high AQI, and app crashes, while successfully projecting a **₹3.09 Crore monthly operating profit**.
+Traditional insurance fails the gig economy because it measures payout via months of paperwork. Aegesis measures payout in milliseconds. Built on a dynamically adjusted weekly premium model (₹45–₹105/week) powered by an XGBoost algorithm, Aegesis protects the most vulnerable segments of the gig workforce against 100% income wipes caused by severe weather, high AQI, and app crashes, while successfully projecting a **₹3.09 Crore monthly operating profit**.
 
 **Strict DEVTrails Constraint Checklist:**
 - [x] **LOSS OF INCOME ONLY:** Strictly excludes health, life, accidents, or vehicle repairs.
@@ -90,7 +90,7 @@ A mobile-first approach is mandatory. We are insuring workers whose entire opera
 
 ## 6. Solution Overview (The 3-Minute Payout Flow)
 
-When a disruption occurs, GigShield activates its fully asynchronous architecture (200–500ms pipeline latency) designed to bypass human adjusters entirely:
+When a disruption occurs, Aegesis activates its fully asynchronous architecture (200–500ms pipeline latency) designed to bypass human adjusters entirely:
 
 1. **DISRUPTION OCCURS:** e.g., Tuesday 7 PM — Heavy Rain in HSR Layout, Bangalore.
 2. **DUAL VALIDATION:** 
@@ -122,7 +122,7 @@ To mathematically protect our ₹6.45 Crore monthly payout pool, we deploy a rut
 - **The Attack:** A bad actor attempts to perform Man-In-The-Middle (MITM) attacks or directly injects fake rainfall payloads to trigger the smart contract artificially.
 - **Defense (Multi-Source Immutable Consensus):** We mandate complete multi-source agreement. The IMD (Primary) and OpenWeatherMap (Secondary) APIs must independently verify the exact JSON parametric payloads (protected by strict cryptographic hash verification). A single hacked endpoint cannot trigger the engine. Cross-referenced against 10-year baseline historical sanity checks ("AQI 450 in monsoon season" is auto-rejected).
 
-By isolating behavioral anomalies (spikes in claim hours) via an **Isolation Forest ML algorithm**, GigShield's fraud walls make a systemic run on the liquidity pool architecturally impossible.
+By isolating behavioral anomalies (spikes in claim hours) via an **Isolation Forest ML algorithm**, Aegesis's fraud walls make a systemic run on the liquidity pool architecturally impossible.
 
 ---
 
@@ -229,7 +229,7 @@ To strictly adhere to the DEVTrails "Loss of Income" mandate, an Earnings Floor 
 
 This maps why our payouts look the way they do based on market disruption economics:
 
-| Trigger | Impact on Platform Vol | Rider Daily Loss | GigShield Payout Range |
+| Trigger | Impact on Platform Vol | Rider Daily Loss | Aegesis Payout Range |
 |---|---|---|---|
 | Heavy Rain (64.5mm+) | 50–65% Drop | ₹700–1,400 | ₹1,200–2,040 |
 | Extreme Heat (45°C+) | 30–50% Drop | ₹350–900 | ₹800–1,200 |
@@ -341,4 +341,4 @@ To prove fiscal responsibility mapped back to our Financial overview:
 - **Settlement:** Zero transactions processed. The ₹6.45 Crore liquidity pool remains mathematically unbreached.
 
 ---
-*GigShield represents a fully scalable, rigorously fraud-tested parametric insurance backend, successfully merging real-world actuarial viability with state-of-the-art machine learning stream architectures to fulfill the true intent of the Parametric protection challenge.*
+*Aegesis represents a fully scalable, rigorously fraud-tested parametric insurance backend, successfully merging real-world actuarial viability with state-of-the-art machine learning stream architectures to fulfill the true intent of the Parametric protection challenge.*
