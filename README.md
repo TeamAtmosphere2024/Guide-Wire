@@ -1,9 +1,9 @@
-# ⚡ GigShield — AI-Powered Parametric Insurance for India's Gig Economy
+#  GigShield — AI-Powered Parametric Insurance for India's Gig Economy
 **Guidewire DEVTrails 2026 — Phase 1 Final Submission**
 
 ---
 
-## 📋 Table of Contents
+##  Table of Contents
 
 | Section # | Topic | Description |
 | :--- | :--- | :--- |
@@ -136,7 +136,7 @@ Every trigger was specifically chosen because it objectively halts 10-minute SLA
 
 Our environmental triggers map perfectly to Q-Commerce pain points where atmospheric conditions force dark stores to suspend 10-minute API dispatch rules.
 
-### 1. 🌡️ Extreme Heat Trigger `EXTREME_HEAT`
+### 1.  Extreme Heat Trigger `EXTREME_HEAT`
 - **Why Q-Commerce:** Zepto/Blinkit riders make 30–50 short outdoor trips per day. At 45°C+, NDMA guidelines advise against outdoor work 12–4 PM. Platforms reduce dispatch. Each lost hour = 5-8 lost deliveries.
 - **Condition:** Temperature ≥ 45°C | Duration ≥ 6 consecutive hours | GPS overlap ≥ 60%.
 - **Data Sources:** IMD (primary) + OpenWeatherMap (secondary, ±2°C tolerance).
@@ -148,7 +148,7 @@ Our environmental triggers map perfectly to Q-Commerce pain points where atmosph
 | 47–49°C | 1.2x | ₹960 |
 | 50°C+ | 1.5x | ₹1,200 |
 
-### 2. 🌧️ Heavy Rain Trigger `HEAVY_RAIN`
+### 2.  Heavy Rain Trigger `HEAVY_RAIN`
 - **Why Q-Commerce:** Rain is the single biggest income killer. A Zepto rider cannot complete a 10-min delivery during heavy rain — the SLA itself becomes physically impossible. Platforms pause dispatch, meaning zero order assignments.
 - **Condition:** ≥ 64.5mm/day (IMD standard) | GPS overlap ≥ 60%.
 - **Data Sources:** IMD (primary) + OpenWeatherMap/IQAir (secondary, ±10mm tolerance).
@@ -159,7 +159,7 @@ Our environmental triggers map perfectly to Q-Commerce pain points where atmosph
 | Very Heavy | 115.6–204.4 mm | 1.3x | ₹1,560 |
 | Extremely Heavy | 204.5+ mm | 1.7x | ₹2,040 |
 
-### 3. 🌫️ High AQI Trigger `HIGH_AQI`
+### 3.  High AQI Trigger `HIGH_AQI`
 - **Why Q-Commerce:** At AQI 300+, Delhi and Mumbai platforms have begun voluntarily reducing dispatch under GRAP Stage III restrictions.
 - **Condition:** AQI ≥ 301 (CPCB standard) | Duration ≥ 6 consecutive hours | GPS overlap ≥ 60%.
 - **Data Sources:** CPCB (primary) + IQAir (secondary, ±20 AQI tolerance).
@@ -171,7 +171,7 @@ Our environmental triggers map perfectly to Q-Commerce pain points where atmosph
 | 351–400 | Very Poor+ | 1.3x | ₹650 |
 | 401–500 | Severe | 1.6x | ₹800 |
 
-### 4. 🌊 Flooding Trigger `FLOODING`
+### 4.  Flooding Trigger `FLOODING`
 - **Why Q-Commerce:** Flooding blocks dark store access roads. A 2-km hyper-local zone can become completely gridlocked by one flooded arterial road.
 - **Condition:** Zone flagged waterlogged/flood-affected | 2+ source confirmation | GPS overlap ≥ 60%.
 - **Data Sources:** Municipal API/SMS alert (primary) + Twitter crowd signals / historical flood-zone overlays (secondary).
@@ -181,7 +181,7 @@ Our environmental triggers map perfectly to Q-Commerce pain points where atmosph
 | Partial waterlogging | 1.2x | ₹1,800 |
 | Severe flooding | 1.8x | ₹2,700 |
 
-### 5. 🚫 Zone Closure Trigger `ZONE_CLOSURE`
+### 5.  Zone Closure Trigger `ZONE_CLOSURE`
 - **Condition:** Official government restriction (curfew, mapped lockdown, disaster, strike). Verified by Government notifications + News API.
 - **Payout:** Partial Zone (1.3x multiplier = ₹1,950) | Full City Closure (2.0x multiplier = ₹3,000).
 
@@ -189,7 +189,7 @@ Our environmental triggers map perfectly to Q-Commerce pain points where atmosph
 
 ## 10. Operational Triggers
 
-### 📉 Platform Downtime Trigger `PLATFORM_DOWNTIME`
+###  Platform Downtime Trigger `PLATFORM_DOWNTIME`
 - **Why Q-Commerce:** App down = exactly zero income immediately. Unlike food delivery, there is no self-assignment fallback. A 15-minute outage during the 8–10 AM morning rush wipes out 7-10 deliveries.
 - **Condition:** API success rate < 95% OR dispatch assignment failure > 10% | Duration ≥ 15 min during peak hours (8–11 AM, 6–10 PM).
 - **Data Sources:** Zepto/Blinkit API monitoring + Status pages + Firebase Crashlytics.
@@ -327,14 +327,14 @@ To prove fiscal responsibility mapped back to our Financial overview:
 
 ## 18. Workflow Scenarios
 
-### Scenario 1: Legitimate Payout — Arjun’s Monsoon Event ✅
+### Scenario 1: Legitimate Payout — Arjun’s Monsoon Event 
 - **Setup:** Arjun pays a ₹175 dynamically calculated premium on Monday. Policy becomes strictly active.
 - **Trigger:** Tuesday at 7 PM, heavy rain strikes Bangalore. IMD records 72mm. OpenWeatherMap independently confirms 70mm (within allowable ±10mm drift range).
 - **Validation:** Our Kafka stream acknowledges Arjun’s background GPS logged a 68% overlap inside the Blinkit HSR routing grid for the last 3 hours. Blinkit dispatch logs reflect zero volume assigned across that grid.
 - **Execution:** The trigger fires. The AI pipeline runs the Multiplier Engine on a base of ₹1,200. Accounting for duration (0.7x) and standard severity, it calculates a value of ₹840. The Isolation Forest parses Arjun's transaction vector and returns 0.28 (Safe).
 - **Settlement:** Tuesday 7:03 PM (within 3 minutes). The Razorpay service executes the payout. Arjun receives ₹840 via UPI, successfully acting as the perfect parametric parallel to his expected 50 disrupted micro-deliveries.
 
-### Scenario 2: Market Crash Matrix — The Syndicate 🚨
+### Scenario 2: Market Crash Matrix — The Syndicate 
 - **Setup:** A malicious syndicate mass-registers 500 fake accounts via emulators on Monday, attempting to simulate a severe thunderstorm disruption on a clear Tuesday.
 - **Trigger Attempt:** The API Gateway receives 500 claims citing AQI 380 + Platform Outage in a deep Delhi zone.
 - **Immediate Rejection:** Our Tri-Layer defense intercepts. The trigger engine rejects the event outright (True API polling dictates CPCB AQI is 162). Even if the syndicate successfully hacked the CPCB API, the database enforces the immediate 48-hour age lock, executing hard-rejections. Simultaneously, our Graph Engine maps the 500 fake users back to 2 `/24` subnets and 3 actual device fingerprints via cryptographic hashing, instantly issuing an administrative freeze. 
